@@ -8,6 +8,7 @@ const StartPage = () => {
   const [theme, setTheme] = useState()
   const [error, setError] = useState(null)
   const [token, setToken] = useState('')
+  const [isLoading, setIsLoading] = useState(null)
   const navigate = useNavigate()
 
   const handleTextChange = e => {
@@ -20,10 +21,13 @@ const StartPage = () => {
 
   const handleStartGame = async () => {
     try {
+      setIsLoading(true)
       const result = await postTheme(theme)
       navigate(`/answers/${result.id}`)
     } catch (err) {
       setError(err)
+    } finally {
+      setIsLoading(null)
     }
   }
 
@@ -42,7 +46,7 @@ const StartPage = () => {
       <h2>Already have a token?</h2>
 
       <TextInput placeholder='Token' onChange={handleTokenText} />
-      <Button text='Join game' onClick={handleJoinGame} />
+      <Button text='Join game' onClick={handleJoinGame} disabled={isLoading} />
       {error && <h4>{JSON.stringify(error)}</h4>}
     </div>
   )

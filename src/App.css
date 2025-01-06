@@ -20,6 +20,14 @@ body {
   align-items: center;
 }
 
+.maxHeight {
+  height: 100vh
+}
+
+.alignedText {
+  text-align: center;
+}
+
 .oneHundred {
   width: 100%;
 }
