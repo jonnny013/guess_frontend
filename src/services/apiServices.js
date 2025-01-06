@@ -26,7 +26,17 @@ export const getTheme = async id => {
 
 export const postAnswer = async answer => {
   try {
-    const results = await axios.get(`${answersUrl}`, answer)
+    const results = await axios.post(`${answersUrl}`, answer)
+    return results.data
+  } catch (err) {
+    console.error(err)
+    throw new Error(err)
+  }
+}
+
+export const getNumberOfAnswers = async id => {
+  try {
+    const results = await axios.get(`${answersUrl}/${id}`)
     return results.data
   } catch (err) {
     console.error(err)
