@@ -30,10 +30,15 @@ const AnswerPage = () => {
   }, [id])
 
   const handleAnswer = async () => {
+    if (!name || !answer) {
+      setError('Please write your name and answer!')
+      return
+    }
+    setError(null)
     try {
       setIsLoading(true)
-      await postAnswer({ answer, name, session: id })
-      navigate(`/games/${id}`)
+      await postAnswer({ answer, name, sessionId: parseInt(id) })
+      navigate(`/waiting/${id}`)
     } catch (err) {
       setError(err)
     } finally {
@@ -53,7 +58,12 @@ const AnswerPage = () => {
         style={{ marginBottom: 10 }}
       />
       <TextInput placeholder='Your name' onChange={e => setName(e.target.value)} />
-      <Button text='Send answer' onClick={handleAnswer} disabled={isLoading} />
+      <Button
+        text='Send answer'
+        style={{ backgroundColor: isLoading ? 'gray' : undefined }}
+        onClick={handleAnswer}
+        disabled={isLoading}
+      />
       {error && <h4>{JSON.stringify(error)}</h4>}
     </div>
   )

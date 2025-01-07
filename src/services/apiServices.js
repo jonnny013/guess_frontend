@@ -36,6 +36,26 @@ export const postAnswer = async answer => {
 
 export const getNumberOfAnswers = async id => {
   try {
+    const results = await axios.get(`${answersUrl}/count/${id}`)
+    return results.data
+  } catch (err) {
+    console.error(err)
+    throw new Error(err)
+  }
+}
+
+export const getARandomAnswerWithNames = async id => {
+  try {
+    const results = await axios.get(`${answersUrl}/random/${id}`)
+    return results.data
+  } catch (err) {
+    console.error(err)
+    throw new Error(err)
+  }
+}
+
+export const getPreviouslyFoundAnswer = async id => {
+  try {
     const results = await axios.get(`${answersUrl}/${id}`)
     return results.data
   } catch (err) {
