@@ -3,6 +3,7 @@ import axios from 'axios'
 const baseUrl = 'http://localhost:3001/api/'
 const sessionsUrl = baseUrl + 'v1/sessions'
 const answersUrl = baseUrl + 'v1/answers'
+const gamesUrl = baseUrl + 'v1/games'
 
 export const postTheme = async theme => {
   try {
@@ -57,6 +58,26 @@ export const getARandomAnswerWithNames = async id => {
 export const getPreviouslyFoundAnswer = async id => {
   try {
     const results = await axios.get(`${answersUrl}/${id}`)
+    return results.data
+  } catch (err) {
+    console.error(err)
+    throw new Error(err)
+  }
+}
+
+export const sendMyGuess = async data => {
+  try {
+    const results = await axios.post(`${gamesUrl}`, data)
+    return results.data
+  } catch (err) {
+    console.error(err)
+    throw new Error(err)
+  }
+}
+
+export const getAllGuesses = async id => {
+  try {
+    const results = await axios.get(`${gamesUrl}/${id}`)
     return results.data
   } catch (err) {
     console.error(err)

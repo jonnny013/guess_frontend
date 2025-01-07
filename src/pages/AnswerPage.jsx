@@ -38,7 +38,7 @@ const AnswerPage = () => {
     try {
       setIsLoading(true)
       await postAnswer({ answer, name, sessionId: parseInt(id) })
-      navigate(`/waiting/${id}`)
+      navigate(`/waiting/${id}/?name=${name}&theme=${theme}`)
     } catch (err) {
       setError(err)
     } finally {

@@ -25,7 +25,8 @@ const StartPage = () => {
       const result = await postTheme(theme)
       navigate(`/answers/${result.id}`)
     } catch (err) {
-      setError(err)
+      console.log(err)
+      setError('something went wrong')
     } finally {
       setIsLoading(null)
     }
@@ -47,7 +48,7 @@ const StartPage = () => {
 
       <TextInput placeholder='Token' onChange={handleTokenText} />
       <Button text='Join game' onClick={handleJoinGame} disabled={isLoading} />
-      {error && <h4>{JSON.stringify(error)}</h4>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
   )
 }

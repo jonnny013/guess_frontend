@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
-import { useParams, useSearchParams } from 'react-router-dom'
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import {
   getARandomAnswerWithNames,
   getPreviouslyFoundAnswer,
+  sendMyGuess,
 } from '../services/apiServices'
 import Button from '../components/Button'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react'
@@ -15,6 +16,9 @@ const GuessingPage = () => {
   const [question, setQuestion] = useState()
   const [error, setError] = useState(null)
   const [isCorrect, setIsCorrect] = useState(undefined)
+  const theme = searchParams.get('theme')
+  const name = searchParams.get('name')
+  const navigate = useNavigate()
 
   useEffect(() => {
     const getResults = async () => {
@@ -27,7 +31,7 @@ const GuessingPage = () => {
         }
         setNames(results.names)
         setQuestion(results.question)
-        setSearchParams({ prev: results.question?.id })
+        setSearchParams({ name, theme, prev: results.question?.id })
       } catch (err) {
         console.log(err)
         setError('something went wrong')
@@ -37,13 +41,27 @@ const GuessingPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 
-  const handleClick = id => {
-    const isCorrect = question.id === id
-    setIsCorrect(isCorrect)
+  const handleClick = async clickedId => {
+    try {
+      const isCorrect = question.id === clickedId
+      setIsCorrect(isCorrect)
+      const gameId = await sendMyGuess({
+        sessionId: parseInt(id),
+        answerId: question.id,
+        name,
+        isCorrect,
+      })
+      setTimeout(() => {
+        navigate(`/final/${id}/?name=${name}&theme=${theme}&gameId=${gameId}`)
+      }, 5000)
+    } catch (err) {
+      console.log(err)
+      setError('something went wrong')
+    }
   }
 
   return (
-    <div className='centered column oneHundred aligned'>
+    <div className='centered column oneHundred aligned' style={{ padding: 10 }}>
       {isCorrect && (
         <div id='isCorrect' className='row centered aligned'>
           <DotLottieReact
@@ -64,7 +82,12 @@ const GuessingPage = () => {
         </div>
       )}
       <h1>Guess who said:</h1>
-      {question && <h2 style={{ color: 'blue' }}>{question.answer}</h2>}
+      {theme && <h2 className='alignedText'>{theme}:</h2>}
+      {question && (
+        <h2 style={{ color: 'blue' }} className='alignedText'>
+          {question.answer}
+        </h2>
+      )}
       <div className='row centered aligned' style={{ gap: 10, overflow: 'scroll' }}>
         {names.length > 0 &&
           names.map(item => (

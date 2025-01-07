@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import Button from '../components/Button'
 import { getNumberOfAnswers } from '../services/apiServices'
 
 const WaitingPage = () => {
   const [finishedPlayers, setFinishedPlayers] = useState(1)
+  const [searchParams] = useSearchParams()
   const [error, setError] = useState(null)
   const id = useParams().id
   const navigate = useNavigate()
 
   const handleClick = () => {
-    navigate(`/guessing/${id}`)
+    const name = searchParams.get('name')
+    const theme = searchParams.get('theme')
+    navigate(`/guessing/${id}/?name=${name}&theme=${theme}`)
   }
 
   useEffect(() => {
@@ -29,8 +32,8 @@ const WaitingPage = () => {
   }, [id])
 
   return (
-    <div className='column centered aligned oneHundred'>
-      <h1>Number of players finished</h1>
+    <div className='column centered aligned oneHundred' style={{ padding: 10 }}>
+      <h1 className='alignedText'>Number of players finished</h1>
       <div
         style={{
           borderRadius: '50%',
@@ -42,7 +45,9 @@ const WaitingPage = () => {
       >
         <h1>{finishedPlayers}</h1>
       </div>
-      <h3>Wait for everyone to finish and then go to the next page!</h3>
+      <h3 className='alignedText'>
+        Wait for everyone to finish and then go to the next page!
+      </h3>
       <Button text='Next page' onClick={handleClick} />
       <p style={{ color: 'red' }}>{error}</p>
     </div>
