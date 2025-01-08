@@ -21,7 +21,7 @@ body {
 }
 
 .maxHeight {
-  height: 100vh
+  height: 100vh;
 }
 
 .alignedText {
@@ -53,13 +53,22 @@ body {
 
 .info-btn {
   position: absolute;
-  right: 40px;
   color: white;
   background-color: black;
   border-radius: 10px;
   padding: 5px;
   font-size: 16px;
   border: none;
+  width: 50px;
+  height: 32px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.info-btn.lang {
+  left: 10px;
+}
+.info-btn.info {
+  right: 10px;
 }
 
 .text-input {
@@ -91,7 +100,8 @@ body {
   transform: scale(0.98);
 }
 
-#instructions::backdrop {
+#instructions::backdrop,
+#performers::backdrop {
   background-color: rgba(0, 0, 0, 0.339);
 }
 
@@ -99,7 +109,8 @@ body {
   box-sizing: border-box;
 }
 
-#instructions {
+#instructions,
+#performers {
   width: 80%;
   max-width: 400px;
   padding: 10px;
@@ -107,7 +118,8 @@ body {
   border-radius: 8px;
 }
 
-#isCorrect, #isFalse {
+#isCorrect,
+#isFalse {
   position: absolute;
   top: 0;
   bottom: 0;

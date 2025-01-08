@@ -7,6 +7,7 @@ import {
 } from '../services/apiServices'
 import Button from '../components/Button'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react'
+import { useTranslation } from 'react-i18next'
 
 const GuessingPage = () => {
   const id = useParams().id
@@ -19,6 +20,7 @@ const GuessingPage = () => {
   const theme = searchParams.get('theme')
   const name = searchParams.get('name')
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   useEffect(() => {
     const getResults = async () => {
@@ -81,18 +83,18 @@ const GuessingPage = () => {
           />
         </div>
       )}
-      <h1>Guess who said:</h1>
+      <h1>{t('guess.title')}</h1>
       {theme && <h2 className='alignedText'>{theme}:</h2>}
       {question && (
         <h2 style={{ color: 'blue' }} className='alignedText'>
           {question.answer}
         </h2>
       )}
-      <div className='row centered aligned' style={{ gap: 10, overflow: 'scroll' }}>
+      <div className='row aligned' style={{ gap: 10, overflow: 'scroll' }}>
         {names.length > 0 &&
           names.map(item => (
             <Button
-              style={{ backgroundColor: 'blue', color: 'white' }}
+              style={{ backgroundColor: 'blue', color: 'white', height: 52, minWidth: 'fit-content' }}
               key={item.id}
               text={item.name}
               onClick={() => handleClick(item.id)}

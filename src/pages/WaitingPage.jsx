@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import Button from '../components/Button'
 import { getNumberOfAnswers } from '../services/apiServices'
+import { useTranslation } from 'react-i18next'
 
 const WaitingPage = () => {
   const [finishedPlayers, setFinishedPlayers] = useState(1)
@@ -9,6 +10,7 @@ const WaitingPage = () => {
   const [error, setError] = useState(null)
   const id = useParams().id
   const navigate = useNavigate()
+  const {t} = useTranslation()
 
   const handleClick = () => {
     const name = searchParams.get('name')
@@ -21,7 +23,6 @@ const WaitingPage = () => {
       try {
         setError(null)
         const result = await getNumberOfAnswers(id)
-        console.log(result)
         setFinishedPlayers(result)
       } catch (err) {
         console.error(err)
@@ -33,7 +34,7 @@ const WaitingPage = () => {
 
   return (
     <div className='column centered aligned oneHundred' style={{ padding: 10 }}>
-      <h1 className='alignedText'>Number of players finished</h1>
+      <h1 className='alignedText'>{t('waiting.title')}</h1>
       <div
         style={{
           borderRadius: '50%',
@@ -45,10 +46,8 @@ const WaitingPage = () => {
       >
         <h1>{finishedPlayers}</h1>
       </div>
-      <h3 className='alignedText'>
-        Wait for everyone to finish and then go to the next page!
-      </h3>
-      <Button text='Next page' onClick={handleClick} />
+      <h3 className='alignedText'>{t('waiting.desc')}</h3>
+      <Button text={t('waiting.btn')} onClick={handleClick} />
       <p style={{ color: 'red' }}>{error}</p>
     </div>
   )

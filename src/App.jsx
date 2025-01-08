@@ -7,6 +7,7 @@ import WaitingPage from './pages/WaitingPage'
 import GuessingPage from './pages/GuessingPage'
 import FinalPage from './pages/FinalPage'
 
+
 function App() {
   return (
     <>

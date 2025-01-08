@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { getTheme, postAnswer } from '../services/apiServices'
 import TextInput from '../components/TextInput'
 import Button from '../components/Button'
+import { useTranslation } from 'react-i18next'
 
 const AnswerPage = () => {
   const { id } = useParams()
@@ -12,13 +13,13 @@ const AnswerPage = () => {
   const [name, setName] = useState()
   const [isLoading, setIsLoading] = useState(null)
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   useEffect(() => {
     const getInfo = async () => {
       try {
         setIsLoading(true)
         const result = await getTheme(id)
-        console.log(result)
         setTheme(result.theme)
       } catch (err) {
         setError(err)
@@ -49,17 +50,20 @@ const AnswerPage = () => {
   return (
     <div className='column aligned'>
       <h2 className='alignedText'>
-        Game Token: <span style={{ color: 'blue' }}>{id}</span>
+        {t('answer.gameToken')}: <span style={{ color: 'blue' }}>{id}</span>
       </h2>
       <h1 className='alignedText'>{theme}</h1>
       <TextInput
-        placeholder='Your answer'
+        placeholder={t('answer.placeholderOne')}
         onChange={e => setAnswer(e.target.value)}
         style={{ marginBottom: 10 }}
       />
-      <TextInput placeholder='Your name' onChange={e => setName(e.target.value)} />
+      <TextInput
+        placeholder={t('answer.placeholderTwo')}
+        onChange={e => setName(e.target.value)}
+      />
       <Button
-        text='Send answer'
+        text={t('answer.button')}
         style={{ backgroundColor: isLoading ? 'gray' : undefined }}
         onClick={handleAnswer}
         disabled={isLoading}
