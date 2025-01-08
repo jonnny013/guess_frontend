@@ -47,6 +47,7 @@ const i18n = i18next.use(initReactI18next).init({
           others: 'Everyone Else:',
           click: 'Click to see your performers💃',
           show: 'Get ready to show off your stuff🎬',
+          correct: 'The correct name is...',
         },
         header: {
           stepOne:
@@ -105,6 +106,7 @@ const i18n = i18next.use(initReactI18next).init({
           others: '其他人：',
           click: '點擊查看你的表演者💃',
           show: '準備好展示你的才藝了🎬',
+          correct: '正確的答案是...',
         },
         header: {
           stepOne: '一個人選擇一個主題，你可以從列表中選擇或創建自己的主題',

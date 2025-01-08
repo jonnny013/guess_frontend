@@ -24,6 +24,7 @@ const GuessingPage = () => {
 
   useEffect(() => {
     const getResults = async () => {
+      if (question) return
       try {
         let results
         if (previousAnswerId) {
@@ -43,15 +44,16 @@ const GuessingPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 
-  const handleClick = async clickedId => {
+  const handleClick = async item => {
     try {
-      const isCorrect = question.id === clickedId
+      const isCorrect = question.id === item.id
       setIsCorrect(isCorrect)
       const gameId = await sendMyGuess({
         sessionId: parseInt(id),
         answerId: question.id,
         name,
         isCorrect,
+        chosenName: item.name,
       })
       setTimeout(() => {
         navigate(`/final/${id}/?name=${name}&theme=${theme}&gameId=${gameId}`)
@@ -94,10 +96,15 @@ const GuessingPage = () => {
         {names.length > 0 &&
           names.map(item => (
             <Button
-              style={{ backgroundColor: 'blue', color: 'white', height: 52, minWidth: 'fit-content' }}
+              style={{
+                backgroundColor: 'blue',
+                color: 'white',
+                height: 52,
+                minWidth: 'fit-content',
+              }}
               key={item.id}
               text={item.name}
-              onClick={() => handleClick(item.id)}
+              onClick={() => handleClick(item)}
               disabled={isCorrect !== undefined}
             />
           ))}

@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   const { i18n, t } = useTranslation()
@@ -25,7 +26,9 @@ const Header = () => {
       <button className='info-btn lang' onClick={handleClick}>
         中/En
       </button>
-      <h1 className='noMargin'>Guess Who!</h1>
+      <Link to='/' style={{color: 'black', textDecoration: 'none'}}>
+        <h1 className='noMargin'>Guess Who!</h1>
+      </Link>
       <button className='info-btn info' popovertarget='instructions'>
         {t('header.info')}
       </button>

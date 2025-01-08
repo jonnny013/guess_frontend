@@ -1,13 +1,18 @@
+/* eslint-disable no-undef */
 import axios from 'axios'
 
-const baseUrl = 'http://localhost:3001/api/'
+const baseUrl =
+  process.env.NODE_ENV === 'production'
+    ? 'https://guess-backend.fly.dev/api/'
+    : 'http://localhost:3001/api/'
 const sessionsUrl = baseUrl + 'v1/sessions'
 const answersUrl = baseUrl + 'v1/answers'
 const gamesUrl = baseUrl + 'v1/games'
 
 export const postTheme = async theme => {
   try {
-    const results = await axios.post(sessionsUrl, theme)
+    console.log(theme)
+    const results = await axios.post(sessionsUrl, { theme })
     return results.data
   } catch (err) {
     console.error(err)

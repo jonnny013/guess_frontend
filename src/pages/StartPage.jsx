@@ -49,7 +49,8 @@ const StartPage = () => {
   }
 
   return (
-    <div className='column  aligned' style={{ height: '100vh', padding: 10 }}>
+    <div className='column  aligned' style={{ height: '100vh', padding: 10, marginBottom: 20 }}>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       <div style={{ maxHeight: 100 }}>
         <DotLottieReact
           src='https://lottie.host/efe132cd-ad6b-4abd-b6e4-67f6fe23189a/BMJTbx1yK4.lottie'
@@ -63,7 +64,7 @@ const StartPage = () => {
         <b>{t('start.descriptionOne')}</b>
       </p>
       <div
-        style={{ overflowX: 'scroll', maxWidth: '90%', gap: 10, margin: 0 }}
+        style={{ overflowX: 'scroll', maxWidth: '90%', gap: 10, margin: 0, minHeight: 'fit-content' }}
         className='row aligned'
       >
         {list.map((item, index) => (
@@ -100,7 +101,6 @@ const StartPage = () => {
 
       <TextInput placeholder={t('start.placeholderTwo')} onChange={handleTokenText} />
       <Button text={t('start.buttonTwo')} onClick={handleJoinGame} disabled={isLoading} />
-      {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
   )
 }

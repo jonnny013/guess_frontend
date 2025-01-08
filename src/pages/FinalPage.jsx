@@ -36,7 +36,7 @@ const FinalPage = () => {
     getResults()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  const performers = listOfResults.filter(a => a?.name !== a.guessedName)
+  const performers = listOfResults.filter(a => a?.correctName !== a?.chosenName)
   return (
     <div className='centered column oneHundred aligned' style={{ padding: 10 }}>
       <h2 className='alignedText'>{theme}</h2>
@@ -50,7 +50,8 @@ const FinalPage = () => {
           <ResultsDisplay
             name={myAnswer.name}
             guessedAnswer={myAnswer.guessedAnswer}
-            guessedName={myAnswer.guessedName}
+            guessedName={myAnswer.chosenName}
+            correctName={myAnswer.correctName}
           />
         </>
       )}
@@ -63,7 +64,8 @@ const FinalPage = () => {
             <ResultsDisplay
               name={item.name}
               guessedAnswer={item.guessedAnswer}
-              guessedName={item.guessedName}
+              guessedName={item.chosenName}
+              correctName={item.correctName}
               key={item.id}
             />
           ))}
