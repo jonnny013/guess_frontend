@@ -99,7 +99,7 @@ const StartPage = () => {
 
       <h2 className='alignedText'>{t('start.titleTwo')}</h2>
 
-      <TextInput placeholder={t('start.placeholderTwo')} onChange={handleTokenText} />
+      <TextInput placeholder={t('start.placeholderTwo')} onChange={handleTokenText} value={token} />
       <Button text={t('start.buttonTwo')} onClick={handleJoinGame} disabled={isLoading} />
     </div>
   )

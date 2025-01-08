@@ -52,7 +52,7 @@ const AnswerPage = () => {
       <h2 className='alignedText'>
         {t('answer.gameToken')}: <span style={{ color: 'blue' }}>{id}</span>
       </h2>
-      <h1 className='alignedText'>{theme}</h1>
+      <h1 className='alignedText paragraph'>{theme}</h1>
       <TextInput
         placeholder={t('answer.placeholderOne')}
         onChange={e => setAnswer(e.target.value)}

@@ -86,9 +86,9 @@ const GuessingPage = () => {
         </div>
       )}
       <h1>{t('guess.title')}</h1>
-      {theme && <h2 className='alignedText'>{theme}:</h2>}
+      {theme && <h2 className='alignedText paragraph'>{theme}:</h2>}
       {question && (
-        <h2 style={{ color: 'blue' }} className='alignedText'>
+        <h2 style={{ color: 'blue' }} className='alignedText paragraph'>
           {question.answer}
         </h2>
       )}

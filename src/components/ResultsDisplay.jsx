@@ -6,7 +6,7 @@ const ResultsDisplay = ({ name, guessedAnswer, guessedName, correctName }) => {
   return (
     <div className='column centered' style={{ margin: '12px 0' }}>
       <h5
-        className='noMargin alignedText'
+        className='noMargin alignedText paragraph'
         style={{ textDecoration: 'underline', color: isCorrect ? 'green' : 'red' }}
       >
         {guessedAnswer}:

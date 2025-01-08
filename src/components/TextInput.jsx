@@ -5,23 +5,25 @@ const TextInput = ({ placeholder, onChange, value, ...others }) => {
 
   const adjustHeight = () => {
     if (textareaRef.current) {
-      textareaRef.current.style.height = 'auto' // Reset height to calculate new height
+      textareaRef.current.style.height = '30px' // Reset height to calculate new height
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px` // Adjust height to fit content
     }
   }
   useEffect(() => {
-    adjustHeight() // Adjust height when the component mounts or value changes
+    adjustHeight()
   }, [value])
   return (
-    <textarea
-      ref={textareaRef}
-      className='text-input'
-      type='text'
-      placeholder={placeholder}
-      onChange={onChange}
-      value={value}
-      {...others}
-    ></textarea>
+    <div style={{width: '100%', maxWidth: 400}}>
+      <textarea
+        ref={textareaRef}
+        className='text-input marginAuto'
+        type='text'
+        placeholder={placeholder}
+        onChange={onChange}
+        value={value}
+        {...others}
+      ></textarea>
+    </div>
   )
 }
 

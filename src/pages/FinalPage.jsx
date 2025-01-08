@@ -39,7 +39,7 @@ const FinalPage = () => {
   const performers = listOfResults.filter(a => a?.correctName !== a?.chosenName)
   return (
     <div className='centered column oneHundred aligned' style={{ padding: 10 }}>
-      <h2 className='alignedText'>{theme}</h2>
+      <h2 className='alignedText paragraph'>{theme}</h2>
       <Button text={t('final.btn')} onClick={getResults} />
 
       {myAnswer && (
