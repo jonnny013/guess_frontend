@@ -57,10 +57,12 @@ const AnswerPage = () => {
         placeholder={t('answer.placeholderOne')}
         onChange={e => setAnswer(e.target.value)}
         style={{ marginBottom: 10 }}
+        value={answer}
       />
       <TextInput
         placeholder={t('answer.placeholderTwo')}
         onChange={e => setName(e.target.value)}
+        value={name}
       />
       <Button
         text={t('answer.button')}

@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const baseUrl =
   process.env.NODE_ENV === 'production'
-    ? 'https://guess-backend.fly.dev/api/'
+    ? 'https://guessing-game.fly.dev/api/'
     : 'http://localhost:3001/api/'
 const sessionsUrl = baseUrl + 'v1/sessions'
 const answersUrl = baseUrl + 'v1/answers'
