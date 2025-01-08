@@ -48,6 +48,22 @@ const i18n = i18next.use(initReactI18next).init({
           click: 'Click to see your performers💃',
           show: 'Get ready to show off your stuff🎬',
         },
+        header: {
+          stepOne:
+            'One person chooses a theme, you can choose from the list or create your own',
+          stepTwo: 'Press the "Start New Game" button',
+          stepThree:
+            'A token number will be delivered, give the token number to the other players',
+          stepFour: 'Insert the token and press "Join Game"',
+          stepFive: 'Answer the question and press send',
+          stepSix:
+            'When everyone is finished, start from the newest member and take turns guessing who wrote each answer',
+          stepSeven:
+            'If you guess correctly, you are safe and the person to your right guesses next.',
+          stepEight:
+            'If your guess is wrong, you must give a performance of your choice (song, dance, juggling, etc.) for 30 seconds at the end.',
+          info: 'Info',
+        },
       },
     },
     zh: {
@@ -89,6 +105,18 @@ const i18n = i18next.use(initReactI18next).init({
           others: '其他人：',
           click: '點擊查看你的表演者💃',
           show: '準備好展示你的才藝了🎬',
+        },
+        header: {
+          stepOne: '一個人選擇一個主題，你可以從列表中選擇或創建自己的主題',
+          stepTwo: '按下 "開始新遊戲" 按鈕',
+          stepThree: '將提供一個代碼號碼，將代碼號碼交給其他玩家',
+          stepFour: '插入代碼並按下 "加入遊戲"',
+          stepFive: '回答問題並按下發送',
+          stepSix: '當每個人都完成後，從最新的成員開始，輪流猜測是誰寫的每個答案',
+          stepSeven: '如果你猜對了，你是安全的，右邊的人接著猜。',
+          stepEight:
+            '如果你的猜測錯誤，你必須在最後進行 30 秒的表演（歌曲、舞蹈、雜技等）。',
+          info: '玩法',
         },
       },
     },
