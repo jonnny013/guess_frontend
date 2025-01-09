@@ -62,7 +62,9 @@ const i18n = i18next.use(initReactI18next).init({
           stepSeven:
             'If you guess correctly, you are safe and the person to your right guesses next.',
           stepEight:
-            'If your guess is wrong, you must give a performance of your choice (song, dance, juggling, etc.) for 30 seconds at the end.',
+            'If your guess is wrong, you must give a performance of your choice 🎤💃 (song, dance, juggling, etc.) for 30 seconds at the end.',
+          stepNine:
+            "📷 Audience take pics and send it to those of us that couldn't make it 😂",
           info: 'Info',
         },
       },
@@ -117,7 +119,8 @@ const i18n = i18next.use(initReactI18next).init({
           stepSix: '當每個人都完成後，從最新的成員開始，輪流猜測是誰寫的每個答案',
           stepSeven: '如果你猜對了，你是安全的，右邊的人接著猜。',
           stepEight:
-            '如果你的猜測錯誤，你必須在最後進行 30 秒的表演（歌曲、舞蹈、雜技等）。',
+            '如果你的猜測錯誤，你必須在最後進行 30 秒的表演 🎤💃（歌曲、舞蹈、雜技等）。',
+          stepNine: '📷 觀看者拍照給我們買來到的人看 😂',
           info: '玩法',
         },
       },

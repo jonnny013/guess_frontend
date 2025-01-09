@@ -21,12 +21,13 @@ const Header = () => {
           <li>
             <b>{t('header.stepEight')}</b>
           </li>
+          <li>{t('header.stepNine')}</li>
         </ol>
       </div>
       <button className='info-btn lang' onClick={handleClick}>
         中/En
       </button>
-      <Link to='/' style={{color: 'black', textDecoration: 'none'}}>
+      <Link to='/' style={{ color: 'black', textDecoration: 'none' }}>
         <h1 className='noMargin'>Guess Who!</h1>
       </Link>
       <button className='info-btn info' popovertarget='instructions'>
