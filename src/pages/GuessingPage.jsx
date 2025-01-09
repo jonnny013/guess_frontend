@@ -92,7 +92,7 @@ const GuessingPage = () => {
           {question.answer}
         </h2>
       )}
-      <div className='row aligned' style={{ gap: 10, overflow: 'scroll' }}>
+      <div className='row aligned' style={{ gap: 10, overflow: 'scroll', maxWidth: '90%' }}>
         {names.length > 0 &&
           names.map(item => (
             <Button

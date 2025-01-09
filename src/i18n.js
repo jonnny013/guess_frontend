@@ -46,7 +46,7 @@ const i18n = i18next.use(initReactI18next).init({
           me: 'My Guess:',
           others: 'Everyone Else:',
           click: 'Click to see your performers💃',
-          show: 'Get ready to show off your stuff🎬',
+          show: 'Get ready to show off your stuff 🎬',
           correct: 'The correct name is...',
         },
         header: {
@@ -104,8 +104,8 @@ const i18n = i18next.use(initReactI18next).init({
           chose: '選擇了',
           me: '我的猜測：',
           others: '其他人：',
-          click: '點擊查看你的表演者💃',
-          show: '準備好展示你的才藝了🎬',
+          click: '點擊查看你的表演者 💃',
+          show: '準備好展示你的才藝了 🎬',
           correct: '正確的答案是...',
         },
         header: {
